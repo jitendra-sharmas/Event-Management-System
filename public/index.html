@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="College Event Management System - Discover, register, and manage campus events seamlessly">
+  <title>CampusVibe - College Event Management System</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+</head>
+<body>
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Floating Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Auth Page -->
+  <div id="authPage" class="auth-container">
+    <div class="auth-wrapper">
+      <div class="auth-brand">
+        <div class="auth-brand-logo">🎓</div>
+        <h1>CampusVibe</h1>
+        <p>Your all-in-one platform to discover and manage campus events. Never miss an amazing college experience!</p>
+        <ul class="auth-brand-features">
+          <li><span>🎪</span> Discover exciting campus events</li>
+          <li><span>📝</span> One-click event registration</li>
+          <li><span>📊</span> Organizer analytics dashboard</li>
+          <li><span>🔔</span> Real-time announcements</li>
+          <li><span>⭐</span> Rate and review events</li>
+        </ul>
+      </div>
+      <div class="auth-form-section">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="loginTab" onclick="switchAuthTab('login')">Sign In</button>
+          <button class="auth-tab" id="registerTab" onclick="switchAuthTab('register')">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="loginForm">
+          <h2>Welcome Back!</h2>
+          <p class="auth-subtitle">Sign in to your CampusVibe account</p>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" id="loginEmail" placeholder="you@college.edu">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-input" id="loginPassword" placeholder="Enter your password">
+          </div>
+          <button class="btn btn-primary btn-full btn-lg" id="loginBtn" onclick="handleLogin()">
+            Sign In →
+          </button>
+          <div style="text-align:center; margin-top:16px; font-size:0.8rem; color:var(--text-muted);">
+            Demo: admin@college.edu / admin123
+          </div>
+        </div>
+
+        <!-- Register Form -->
+        <div id="registerForm" style="display:none;">
+          <h2>Create Account</h2>
+          <p class="auth-subtitle">Join CampusVibe today</p>
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-input" id="regName" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" id="regEmail" placeholder="you@college.edu">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-input" id="regPassword" placeholder="Create a strong password">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Role</label>
+              <select class="form-input" id="regRole">
+                <option value="student">Student</option>
+                <option value="organizer">Organizer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Department</label>
+              <select class="form-input" id="regDepartment">
+                <option value="">Select Department</option>
+                <optgroup label="🖥️ Engineering & Technology">
+                  <option>Computer Science & Engineering</option>
+                  <option>Information Technology</option>
+                  <option>Artificial Intelligence & ML</option>
+                  <option>Data Science</option>
+                  <option>Cybersecurity</option>
+                  <option>Electronics & Communication</option>
+                  <option>Electrical & Electronics</option>
+                  <option>Electrical Engineering</option>
+                  <option>Mechanical Engineering</option>
+                  <option>Civil Engineering</option>
+                  <option>Chemical Engineering</option>
+                  <option>Aerospace Engineering</option>
+                  <option>Biomedical Engineering</option>
+                  <option>Automobile Engineering</option>
+                  <option>Robotics & Automation</option>
+                  <option>Mining Engineering</option>
+                  <option>Environmental Engineering</option>
+                  <option>Industrial Engineering</option>
+                </optgroup>
+                <optgroup label="🔬 Sciences">
+                  <option>Physics</option>
+                  <option>Chemistry</option>
+                  <option>Mathematics</option>
+                  <option>Statistics</option>
+                  <option>Biology / Life Sciences</option>
+                  <option>Biotechnology</option>
+                  <option>Microbiology</option>
+                  <option>Zoology</option>
+                  <option>Botany</option>
+                  <option>Biochemistry</option>
+                  <option>Environmental Science</option>
+                  <option>Geology</option>
+                </optgroup>
+                <optgroup label="💼 Commerce & Management">
+                  <option>Business Administration (BBA/MBA)</option>
+                  <option>Commerce</option>
+                  <option>Accounting & Finance</option>
+                  <option>Marketing</option>
+                  <option>Human Resource Management</option>
+                  <option>International Business</option>
+                  <option>Economics</option>
+                  <option>Banking & Insurance</option>
+                </optgroup>
+                <optgroup label="🎨 Arts & Humanities">
+                  <option>English Literature</option>
+                  <option>History</option>
+                  <option>Political Science</option>
+                  <option>Psychology</option>
+                  <option>Sociology</option>
+                  <option>Philosophy</option>
+                  <option>Journalism & Mass Communication</option>
+                  <option>Fine Arts</option>
+                  <option>Music</option>
+                  <option>Performing Arts</option>
+                  <option>Foreign Languages</option>
+                  <option>Public Administration</option>
+                  <option>Social Work</option>
+                </optgroup>
+                <optgroup label="⚖️ Law">
+                  <option>Law (LLB / LLM)</option>
+                  <option>Corporate Law</option>
+                  <option>Criminal Law</option>
+                </optgroup>
+                <optgroup label="🏥 Medical & Health Sciences">
+                  <option>Medicine (MBBS)</option>
+                  <option>Dental Science (BDS)</option>
+                  <option>Pharmacy</option>
+                  <option>Nursing</option>
+                  <option>Physiotherapy</option>
+                  <option>Public Health</option>
+                  <option>Veterinary Science</option>
+                  <option>Ayurveda / BAMS</option>
+                </optgroup>
+                <optgroup label="🎓 Education & Others">
+                  <option>Education (B.Ed / M.Ed)</option>
+                  <option>Physical Education</option>
+                  <option>Library Science</option>
+                  <option>Agriculture</option>
+                  <option>Architecture</option>
+                  <option>Fashion Design</option>
+                  <option>Hotel Management</option>
+                  <option>Aviation</option>
+                  <option>Other</option>
+                </optgroup>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Year</label>
+              <select class="form-input" id="regYear">
+                <option value="">Select Year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" class="form-input" id="regPhone" placeholder="Phone number">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full btn-lg" id="regBtn" onclick="handleRegister()">
+            Create Account →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main App Layout -->
+  <div id="appLayout" class="app-layout" style="display:none;">
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">🎓</div>
+        <h2>CampusVibe <span>Event Management</span></h2>
+      </div>
+
+      <div class="sidebar-nav" id="sidebarNav">
+        <!-- Nav items injected by JS based on role -->
+      </div>
+
+      <div class="sidebar-user" id="sidebarUser">
+        <!-- User info injected by JS -->
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="main-header-left">
+          <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+          <h1 class="page-title" id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="main-header-right">
+          <div class="header-search">
+            <span class="header-search-icon">🔍</span>
+            <input type="text" placeholder="Search events..." id="globalSearch" oninput="handleGlobalSearch(this.value)">
+          </div>
+          <button class="header-notification" onclick="navigateTo('announcements')">
+            🔔
+            <span class="notification-dot" id="notificationDot"></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="page-content" id="pageContent">
+        <!-- Pages rendered here by JS -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeModalOnBackdrop(event)">
+    <div class="modal" id="modalContent">
+      <!-- Modal content injected by JS -->
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
