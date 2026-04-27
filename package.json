@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "seed": "node database/seed.js"
+    "seed": "node database/seed.js",
+    "client:install": "npm install --prefix frontend",
+    "client:dev": "npm run dev --prefix frontend",
+    "client:build": "npm run build --prefix frontend"
   },
   "keywords": ["college", "events", "management"],
   "author": "",

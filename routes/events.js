@@ -70,7 +70,7 @@ router.get('/:id', (req, res) => {
 
     // Get registrations
     const registrations = db.prepare(`
-      SELECT r.*, u.full_name, u.email, u.department, u.year
+      SELECT r.*, u.full_name, u.email, u.department, u.year, u.phone, u.role, u.avatar_color, u.created_at as user_created_at
       FROM registrations r
       JOIN users u ON r.user_id = u.id
       WHERE r.event_id = ?
